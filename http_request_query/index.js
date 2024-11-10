@@ -7,11 +7,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 app.get("/register", (req, res) => {
-    res.sendFile();
+    res.sendFile(__dirname + "/index.html");
 });
 
 app.post("/register", (req, res) => {
-    res.send("hello");
+    const fullName = req.body.fullName;
+    const age = req.body.age;
+    res.send(`Welcome ${fullName}. You are ${age}`);
 });
 
 app.listen(PORT, () => {
